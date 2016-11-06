@@ -46,7 +46,7 @@
     "cp-cli": "^1.0.2",
     "rimraf": "^2.5.4",
     "typedoc": "^0.4.5",
-    "typescript": "^1.8.10",
+    "typescript": "^2.0.7",
     "xstream": "^7.0.0"
   }
 }
