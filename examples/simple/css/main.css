@@ -1,0 +1,12 @@
+#app {
+    font-size: 35px;
+}
+
+body, html {
+    max-height: 100%;
+    margin: 0;
+}
+
+body {
+    padding: 20px;
+}
