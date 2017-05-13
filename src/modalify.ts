@@ -92,7 +92,7 @@ export function modalify(main : Component, name = 'modal', center = true, modalC
     }
 }
 
-export function centerHTML(...children : VNode[]) : VNode
+export function centerHTML(children : VNode[]) : VNode
 {
     return h('div', {
         style: {
@@ -129,7 +129,7 @@ function displayModals(modals : VNode[], background : string = 'rgba(0,0,0,0.8)'
         position: 'absolute',
         width: '100%',
         height: '100%'
-    }, h('div', {}, [centerHTML(...processedModals)]));
+    }, h('div', {}, [centerHTML(processedModals)]));
 }
 
 function wrapModals(modals : VNode[], containerClass : string | null = null) : VNode[]
