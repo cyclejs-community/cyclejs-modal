@@ -1,12 +1,12 @@
 import xs, { Stream } from 'xstream';
-import Cycle from '@cycle/xstream-run';
+import { run } from '@cycle/run';
 import { button, div, span, makeDOMDriver, DOMSource, VNode } from '@cycle/dom';
 
-import { modalify, ModalAction } from '../../../src/modalify';
+import { modalify, Message, ModalAction } from '../../../src/modalify';
 
 interface Sources {
     DOM : DOMSource;
-    modal : Stream<ModalAction>; //Can be used for messaging the creator
+    modal : Stream<Message>;
 }
 
 interface Sinks {
@@ -22,7 +22,7 @@ function main({ DOM } : Sources) : Sinks
             .mapTo({
                 type: 'open',
                 component: modal
-            })
+            } as ModalAction)
     };
 }
 
@@ -34,10 +34,10 @@ function modal({ DOM } : Sources) : Sinks
             button('.button', ['close'])
         ])),
         modal: DOM.select('.button').events('click')
-            .mapTo({ type: 'close' })
+            .mapTo({ type: 'close' } as ModalAction)
     };
 }
 
-Cycle.run(modalify(main), {
+run(modalify(main), {
     DOM: makeDOMDriver('#app')
 });
