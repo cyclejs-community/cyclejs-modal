@@ -16,7 +16,7 @@ export interface Open {
 export interface Close {
     type : 'close';
     count? : number; //Default is one
-}
+} 
 export interface Message {
     type : 'message';
     payload : any;
@@ -104,9 +104,7 @@ export function centerHTML(child : VNode) : VNode
         style: {
             width: '100%',
             height: '100%',
-            position: 'relative',
-            delayed: undefined,
-            remove: undefined
+            position: 'relative'
         }
     }, [
         h('div', {
@@ -116,9 +114,7 @@ export function centerHTML(child : VNode) : VNode
                 left: '50%',
                 '-ms-transform': 'translate(-50%, -50%)',
                 '-webkit-transform': 'translate(-50%, -50%)',
-                transform: 'translate(-50%, -50%)',
-                delayed: undefined,
-                remove: undefined
+                transform: 'translate(-50%, -50%)'
             }
         }, [child])
     ]);
@@ -156,9 +152,7 @@ function wrapModals(modals : VNode[], containerClass : string | null = null) : V
             background: 'white',
             width: 'auto',
             height: 'auto',
-            'border-radius': '5px',
-            delayed: undefined,
-            remove: undefined
+            'border-radius': '5px'
         }
     }, [
         child
@@ -179,5 +173,5 @@ function addStyles(styles: { [k : string]: any }, vnode : VNode) : VNode
                 ...styles
             }
         }
-    } as VNode;
+    };
 }
