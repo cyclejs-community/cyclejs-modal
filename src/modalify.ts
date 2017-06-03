@@ -24,7 +24,12 @@ export interface Message {
 
 export type ModalAction = Open | Close | Message;
 
-export function modalify(main : Component, name = 'modal', center = true, modalContainerClass : string = null, background : string = 'rgba(0,0,0,0.8)') : Component
+export function modalify(main : Component,
+    name = 'modal',
+    center = true,
+    modalContainerClass : string = null,
+    background : string = 'rgba(0,0,0,0.8)',
+    zIndex = 500) : Component
 {
     return function(sources : Sources) : Sinks
     {
@@ -66,7 +71,8 @@ export function modalify(main : Component, name = 'modal', center = true, modalC
                     center && modals.length > 0 ?
                         displayModals(
                             wrapModals(modals, modalContainerClass),
-                            background
+                            background,
+                            zIndex
                         )
                         : h('div', {}, modals)
                 ]));
@@ -118,7 +124,7 @@ export function centerHTML(child : VNode) : VNode
     ]);
 }
 
-function displayModals(modals : VNode[], background : string = 'rgba(0,0,0,0.8)') : VNode
+function displayModals(modals : VNode[], background : string = 'rgba(0,0,0,0.8)', zIndex = 500) : VNode
 {
     const processedModals : VNode[] = modals
         .map((m, i) => addStyles({
@@ -127,6 +133,7 @@ function displayModals(modals : VNode[], background : string = 'rgba(0,0,0,0.8)'
 
     return addStyles({
         background,
+        'z-index': zIndex,
         overflow: 'hidden',
         top: document.body.scrollTop + 'px',
         left: document.body.scrollLeft + 'px',
