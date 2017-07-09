@@ -16,7 +16,7 @@ export interface Open {
 export interface Close {
     type : 'close';
     count? : number; //Default is one
-} 
+}
 export interface Message {
     type : 'message';
     payload : any;
