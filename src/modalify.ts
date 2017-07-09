@@ -98,7 +98,7 @@ export function modalify(main : Component,
     }
 }
 
-export function centerHTML(child : VNode) : VNode
+export function centerHTML(children : VNode[]) : VNode
 {
     return h('div', {
         style: {
@@ -106,7 +106,7 @@ export function centerHTML(child : VNode) : VNode
             height: '100%',
             position: 'relative'
         }
-    }, [
+    }, children.map(child =>
         h('div', {
             style: {
                 position: 'absolute',
@@ -117,7 +117,7 @@ export function centerHTML(child : VNode) : VNode
                 transform: 'translate(-50%, -50%)'
             }
         }, [child])
-    ]);
+    ));
 }
 
 function displayModals(modals : VNode[], background : string = 'rgba(0,0,0,0.8)', zIndex = 500) : VNode
@@ -136,7 +136,7 @@ function displayModals(modals : VNode[], background : string = 'rgba(0,0,0,0.8)'
         position: 'absolute',
         width: '100%',
         height: '100%'
-    }, h('div', {}, [centerHTML(h('div', {}, processedModals))]));
+    }, h('div', {}, [centerHTML(processedModals)]));
 }
 
 function wrapModals(modals : VNode[], containerClass : string | null = null) : VNode[]
