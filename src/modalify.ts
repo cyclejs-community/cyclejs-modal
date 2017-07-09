@@ -124,16 +124,15 @@ function displayModals(modals : VNode[], background : string = 'rgba(0,0,0,0.8)'
 {
     const processedModals : VNode[] = modals
         .map((m, i) => addStyles({
-            'z-index': i * 5 + 10
+            'z-index': i * 5 + 10 + zIndex
         }, m));
 
     return addStyles({
         background,
         'z-index': zIndex,
-        overflow: 'hidden',
-        top: document.body.scrollTop + 'px',
-        left: document.body.scrollLeft + 'px',
-        position: 'absolute',
+        top: '0px',
+        left: '0px',
+        position: 'fixed',
         width: '100%',
         height: '100%'
     }, h('div', {}, [centerHTML(processedModals)]));
