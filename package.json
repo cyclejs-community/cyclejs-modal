@@ -1,6 +1,6 @@
 {
   "name": "cyclejs-modal",
-  "version": "2.0.3",
+  "version": "2.0.5",
   "description": "An easy way to open custom modals in a cyclejs app",
   "main": "build/src/modalify.js",
   "typings": "build/src/modalify.d.ts",
