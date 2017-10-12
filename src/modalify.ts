@@ -35,9 +35,13 @@ export function modalify(main : Component,
     {
         const messageProxy$ : Stream<Message> = xs.create<Message>();
 
-        const sinks : Sinks = main({
+        const parentSinks : Sinks = main({
             ...sources, [name]: adapt(messageProxy$)
         });
+
+        const sinks : Sinks = Object.keys(parentSinks)
+            .map(k => ({ [k]: xs.fromObservable(parentSinks[k]) }))
+            .reduce(( prev, curr ) => Object.assign( prev, curr ), {});
 
         if(sinks[name])
         {
@@ -52,7 +56,11 @@ export function modalify(main : Component,
                         return acc.slice(0, Math.max(acc.length - count, 0));
                     }
                     else if(curr.type === 'open') {
-                        return [...acc, isolate(curr.component)(sources)];
+                        const componentSinks : Sinks = isolate(curr.component)(sources);
+                        const xsComponentSinks : Sinks = Object.keys(componentSinks)
+                            .map(k => ({ [k]: xs.fromObservable(componentSinks[k]) }))
+                            .reduce((prev, curr) => Object.assign(prev, curr), {});
+                        return [...acc, xsComponentSinks ];
                     }
                     return acc;
                 }, []);
