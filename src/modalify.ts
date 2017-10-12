@@ -35,9 +35,13 @@ export function modalify(main : Component,
     {
         const messageProxy$ : Stream<Message> = xs.create<Message>();
 
-        const sinks : Sinks = main({
+        const parentSinks : Sinks = main({
             ...sources, [name]: adapt(messageProxy$)
         });
+
+        const sinks : Sinks = Object.keys(parentSinks)
+            .map(k => ({ [k]: xs.fromObservable(parentSinks[k]) }))
+            .reduce(( prev, curr ) => Object.assign( prev, curr ), {});
 
         if(sinks[name])
         {
