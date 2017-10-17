@@ -2,6 +2,7 @@ import { Stream } from 'xstream';
 import { Observable } from 'rxjs';
 import { run } from '@cycle/rxjs-run';
 import { button, div, span, makeDOMDriver, DOMSource, VNode } from '@cycle/dom';
+import isolate from '@cycle/isolate';
 
 import { modalify, Message, ModalAction } from '../../../src/modalify';
 
@@ -22,7 +23,7 @@ function main({ DOM } : Sources) : Sinks
         modal: DOM.select('.button').events('click')
             .mapTo({
                 type: 'open',
-                component: modal
+                component: isolate(modal)
             } as ModalAction)
     };
 }
