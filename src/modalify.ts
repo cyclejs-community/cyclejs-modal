@@ -47,7 +47,7 @@ export function modalify(main : Component,
         {
             const modalProxy$ : Stream<ModalAction> = xs.create<ModalAction>();
             const modalStack$ : Stream<Sinks[]> = xs.merge(
-                xs.fromObservable<ModalAction>(sinks[name]),
+                sinks[name] as Stream<ModalAction>,
                 modalProxy$
             )
                 .fold((acc, curr) => {
@@ -71,7 +71,7 @@ export function modalify(main : Component,
                 .flatten();
 
             const mergedVDom$ : Stream<VNode> = xs.combine(
-                xs.fromObservable<VNode>(sinks.DOM),
+                sinks.DOM as Stream<VNode>,
                 modalVDom$
             )
                 .map<VNode>(([vdom, modals]) => h('div', {}, [
