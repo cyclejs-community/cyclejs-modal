@@ -39,6 +39,15 @@ function modal({ DOM } : Sources) : Sinks
     };
 }
 
-run(modalify(main), {
+const modalifiedMain = modalify( main, {
+  name : 'modal',
+  DOMDriverKey : 'DOM',
+  center : true,
+  modalContainerClass : null,
+  background : 'rgba(0,0,0,0.8)',
+  zIndex : 500
+});
+
+run( modalifiedMain, {
     DOM: makeDOMDriver('#app')
 });

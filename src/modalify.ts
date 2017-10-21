@@ -24,12 +24,23 @@ export interface Message {
 
 export type ModalAction = Open | Close | Message;
 
-export function modalify(main : Component,
+export interface Options {
+    name? : string;
+    DOMDriverKey? : string;
+    center? : boolean;
+    modalContainerClass? : string;
+    background? : string;
+    zIndex? : number;
+}
+
+export function modalify(main : Component, {
     name = 'modal',
+    DOMDriverKey = 'DOM',
     center = true,
-    modalContainerClass : string = null,
-    background : string = 'rgba(0,0,0,0.8)',
-    zIndex = 500) : Component
+    modalContainerClass = null,
+    background = 'rgba(0,0,0,0.8)',
+    zIndex = 500
+} : Options = {} ) : Component
 {
     return function(sources : Sources) : Sinks
     {
@@ -66,12 +77,12 @@ export function modalify(main : Component,
                 }, []);
 
             const modalVDom$ : Stream<VNode[]> = modalStack$
-                .map<Stream<VNode>[]>(arr => arr.map(s => s.DOM))
+                .map<Stream<VNode>[]>(arr => arr.map(s => s[DOMDriverKey]))
                 .map<Stream<VNode[]>>(arr => xs.combine(...arr))
                 .flatten();
 
             const mergedVDom$ : Stream<VNode> = xs.combine(
-                sinks.DOM as Stream<VNode>,
+                sinks[DOMDriverKey] as Stream<VNode>,
                 modalVDom$
             )
                 .map<VNode>(([vdom, modals]) => h('div', {}, [
@@ -95,7 +106,7 @@ export function modalify(main : Component,
 
             const newSinks = {
                ...mergeSinks(extractedSinks, sinks),
-               DOM: mergedVDom$
+               [DOMDriverKey]: mergedVDom$
             };
 
             return Object.keys(newSinks)
