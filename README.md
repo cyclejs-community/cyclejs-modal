@@ -1,12 +1,10 @@
 # cyclejs-modal
 An easy way to open custom modals in a cyclejs app
 
+Documentation is hosted on [Github Pages](https://cyclejs-community.github.io/cyclejs-modal/index.html)
+
 ## Use it
 `npm install --save cyclejs-modal`
-
-## Caveats
-
-`modalify` assumes that your DOM Driver is using the `DOM` property for sink and source.
 
 ## Example
 
