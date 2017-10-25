@@ -68,6 +68,32 @@
 				<p>An easy way to open custom modals in a cyclejs app</p>
 				<h2 id="use-it">Use it</h2>
 				<p><code>npm install --save cyclejs-modal</code></p>
+				<h2 id="caveats">Caveats</h2>
+				<p><code>modalify</code> assumes that your DOM Driver is using the <code>DOM</code> property for sink and source.</p>
+				<h2 id="example">Example</h2>
+				<p>You can find the examples in the <a href="https://github.com/cyclejs-community/cyclejs-modal/tree/master/examples">examples/</a> folder</p>
+				<pre><code class="lang-js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">main</span>(<span class="hljs-params">{ DOM }</span>) </span>{
+    <span class="hljs-keyword">return</span> {
+        <span class="hljs-attr">DOM</span>: xs.of(button(<span class="hljs-string">'.button'</span>, [<span class="hljs-string">'open modal'</span>])),
+        <span class="hljs-attr">modal</span>: DOM.select(<span class="hljs-string">'.button'</span>).events(<span class="hljs-string">'click'</span>)
+            .mapTo({
+                <span class="hljs-attr">type</span>: <span class="hljs-string">'open'</span>,
+                <span class="hljs-attr">component</span>: isolate(modal, <span class="hljs-string">'myscope'</span>)
+            } <span class="hljs-keyword">as</span> ModalAction)
+    };
+}
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">modal</span>(<span class="hljs-params">{ DOM }</span>) </span>{
+    <span class="hljs-keyword">return</span> {
+        <span class="hljs-attr">DOM</span>: xs.of(div(<span class="hljs-string">'.div'</span>, [
+            span(<span class="hljs-string">'.span'</span>, [<span class="hljs-string">'This is a modal. Yeah? :)'</span>]),
+            button(<span class="hljs-string">'.button'</span>, [<span class="hljs-string">'close'</span>])
+        ])),
+        <span class="hljs-attr">modal</span>: DOM.select(<span class="hljs-string">'.button'</span>).events(<span class="hljs-string">'click'</span>)
+            .mapTo({ <span class="hljs-attr">type</span>: <span class="hljs-string">'close'</span> } <span class="hljs-keyword">as</span> ModalAction)
+    };
+}
+</code></pre>
 				<h2 id="try-it">Try it</h2>
 				<p>Clone it, run <code>npm i &amp;&amp; npm run examples</code></p>
 			</div>
