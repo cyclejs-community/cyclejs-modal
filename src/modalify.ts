@@ -111,7 +111,7 @@ export function modalify(main : Component, {
 
             return Object.keys(newSinks)
                 .map(k => ({ [k]: adapt(newSinks[k]) }))
-                .reduce(Object.assign, {});
+                .reduce((prev, curr) => Object.assign(prev, curr), {});
         }
         return sinks;
     }
