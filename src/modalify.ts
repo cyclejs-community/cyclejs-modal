@@ -97,7 +97,7 @@ export function modalify(main : Component, {
                 ]));
 
             const extractedSinks : Sinks = extractSinks(
-                    modalStack$.map<Sinks>(arr => mergeSinks(...arr)),
+                    modalStack$.map<Sinks>(mergeSinks),
                     Object.keys(sinks)
                 );
 
@@ -105,7 +105,7 @@ export function modalify(main : Component, {
             messageProxy$.imitate(extractedSinks.modal.filter(a => a.type === 'message'));
 
             const newSinks = {
-               ...mergeSinks(extractedSinks, sinks),
+               ...mergeSinks([ extractedSinks, sinks ]),
                [DOMDriverKey]: mergedVDom$
             };
 
