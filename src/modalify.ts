@@ -101,8 +101,8 @@ export function modalify(main : Component, {
                     Object.keys(sinks)
                 );
 
-            modalProxy$.imitate(extractedSinks.modal);
-            messageProxy$.imitate(extractedSinks.modal.filter(a => a.type === 'message'));
+            modalProxy$.imitate(extractedSinks[name]);
+            messageProxy$.imitate(extractedSinks[name].filter(a => a.type === 'message'));
 
             const newSinks = {
                ...mergeSinks([ extractedSinks, sinks ]),
