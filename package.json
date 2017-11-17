@@ -9,11 +9,12 @@
     "precommit": "lint-staged",
     "format": "prettier --write './{src,examples}/**/*.{ts,tsx}'",
     "build": "rimraf build/* && tsc -d --module ES6 --outDir build/es6 && tsc -d && rimraf build/examples",
-    "documentation": "typedoc --out docs src && cp-cli .nojekyll docs/.nojekyll",
+    "documentation": "typedoc --out docs src && touch docs/.nojekyll",
     "prepublishOnly": "npm run build && npm run documentation",
-    "examples": "npm run build && npm run examples:simple && npm run examples:rxjs && npm run examples:onionify",
+    "examples": "npm run build && npm run examples:simple && npm run examples:rxjs && npm run examples:onionify && npm run examples:animated",
     "examples:simple": "browserify build/cjs/examples/simple/src/index.js -o examples/simple/build/index.js && opn examples/simple/index.html",
     "examples:onionify": "browserify build/cjs/examples/onionify/src/index.js -o examples/onionify/build/index.js && opn examples/onionify/index.html",
+    "examples:animated": "browserify build/cjs/examples/animated/src/index.js -o examples/animated/build/index.js && opn examples/animated/index.html",
     "examples:rxjs": "browserify build/cjs/examples/rxjs/src/index.js -o examples/rxjs/build/index.js && opn examples/rxjs/index.html"
   },
   "prettier": {
