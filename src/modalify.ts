@@ -93,7 +93,11 @@ export function modalify(main : Component, {
                             background,
                             zIndex
                         )
-                        : h('div', {}, modals)
+                        : h('div', {
+                            attrs: {
+                                class: modalContainerClass || ""
+                            }
+                        }, modals)
                 ]));
 
             const extractedSinks : Sinks = extractSinks(
