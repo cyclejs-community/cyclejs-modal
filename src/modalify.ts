@@ -29,6 +29,7 @@ export interface Options {
     DOMDriverKey? : string;
     center? : boolean;
     modalContainerClass? : string;
+    wrapperClass? : string;
     background? : string;
     zIndex? : number;
 }
@@ -37,6 +38,7 @@ export function modalify(main : Component, {
     name = 'modal',
     DOMDriverKey = 'DOM',
     center = true,
+    wrapperClass = null,
     modalContainerClass = null,
     background = 'rgba(0,0,0,0.8)',
     zIndex = 500
@@ -85,7 +87,7 @@ export function modalify(main : Component, {
                 sinks[DOMDriverKey] as Stream<VNode>,
                 modalVDom$
             )
-                .map<VNode>(([vdom, modals]) => h('div', {}, [
+                .map<VNode>(([vdom, modals]) => h('div', { attrs: { class: wrapperClass || '' }}, [
                     vdom,
                     center && modals.length > 0 ?
                         displayModals(
