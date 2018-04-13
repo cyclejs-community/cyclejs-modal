@@ -9,7 +9,7 @@
     "precommit": "lint-staged",
     "format": "prettier --write './{src,examples}/**/*.{ts,tsx}'",
     "build": "rimraf build/* && tsc -d --module ES6 --outDir build/es6 && tsc -d && rimraf build/examples",
-    "documentation": "typedoc --out docs src && cp-cli .nojekyll dock/.nojekyll",
+    "documentation": "typedoc --out docs src && cp-cli .nojekyll docs/.nojekyll",
     "prepublishOnly": "npm run build && npm run documentation",
     "examples": "npm run build && npm run examples:simple",
     "examples:simple": "browserify build/cjs/examples/simple/src/index.js -o examples/simple/build/index.js && opn examples/simple/index.html",
