@@ -7,20 +7,20 @@ import isolate from '@cycle/isolate';
 import { modalify, Message, ModalAction } from '../../../src/modalify';
 
 interface Sources {
-    DOM : DOMSource;
-    modal : Observable<Message>;
+    DOM: DOMSource;
+    modal: Observable<Message>;
 }
 
 interface Sinks {
-    DOM? : Observable<VNode>;
-    modal? : Stream<ModalAction>;
+    DOM?: Observable<VNode>;
+    modal?: Stream<ModalAction>;
 }
 
-function main({ DOM } : Sources) : Sinks
-{
+function main({ DOM }: Sources): Sinks {
     return {
         DOM: Observable.of(button('.button', ['open modal'])),
-        modal: DOM.select('.button').events('click')
+        modal: DOM.select('.button')
+            .events('click')
             .mapTo({
                 type: 'open',
                 component: isolate(modal)
@@ -28,14 +28,16 @@ function main({ DOM } : Sources) : Sinks
     };
 }
 
-function modal({ DOM } : Sources) : Sinks
-{
+function modal({ DOM }: Sources): Sinks {
     return {
-        DOM: Observable.of(div('.div', [
-            span('.span', ['This is an rxjs modal! :)']),
-            button('.button', ['close'])
-        ])),
-        modal: DOM.select('.button').events('click')
+        DOM: Observable.of(
+            div('.div', [
+                span('.span', ['This is an rxjs modal! :)']),
+                button('.button', ['close'])
+            ])
+        ),
+        modal: DOM.select('.button')
+            .events('click')
             .mapTo({ type: 'close' } as ModalAction)
     };
 }
