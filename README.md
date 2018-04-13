@@ -10,6 +10,8 @@ Documentation is hosted on [Github Pages](https://cyclejs-community.github.io/cy
 
 You can find the examples in the [examples/](https://github.com/cyclejs-community/cyclejs-modal/tree/master/examples) folder
 
+Since Version 5.2.0 you can also pass the sources to the created modal. This allows the modal to access the isolation scope of its creation place. Take a look at the [onionify example](https://github.com/cyclejs-community/cyclejs-modal/blob/master/examples/onionify/src/index.ts) to see this in action.
+
 ```js
 function main({ DOM }) {
     return {
