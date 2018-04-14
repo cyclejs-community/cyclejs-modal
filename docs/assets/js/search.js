@@ -51,6 +51,14 @@ typedoc.search.data = {
         },
         {
             id: 5,
+            kind: 1024,
+            name: 'backgroundOverlayClose',
+            url: 'interfaces/_modalify_.open.html#backgroundoverlayclose',
+            classes: 'tsd-kind-property tsd-parent-kind-interface',
+            parent: '"modalify".Open'
+        },
+        {
+            id: 6,
             kind: 256,
             name: 'Close',
             url: 'interfaces/_modalify_.close.html',
@@ -58,7 +66,7 @@ typedoc.search.data = {
             parent: '"modalify"'
         },
         {
-            id: 6,
+            id: 7,
             kind: 1024,
             name: 'type',
             url: 'interfaces/_modalify_.close.html#type',
@@ -66,7 +74,7 @@ typedoc.search.data = {
             parent: '"modalify".Close'
         },
         {
-            id: 7,
+            id: 8,
             kind: 1024,
             name: 'count',
             url: 'interfaces/_modalify_.close.html#count',
@@ -74,7 +82,7 @@ typedoc.search.data = {
             parent: '"modalify".Close'
         },
         {
-            id: 8,
+            id: 9,
             kind: 256,
             name: 'Message',
             url: 'interfaces/_modalify_.message.html',
@@ -82,7 +90,7 @@ typedoc.search.data = {
             parent: '"modalify"'
         },
         {
-            id: 9,
+            id: 10,
             kind: 1024,
             name: 'type',
             url: 'interfaces/_modalify_.message.html#type',
@@ -90,7 +98,7 @@ typedoc.search.data = {
             parent: '"modalify".Message'
         },
         {
-            id: 10,
+            id: 11,
             kind: 1024,
             name: 'payload',
             url: 'interfaces/_modalify_.message.html#payload',
@@ -98,7 +106,7 @@ typedoc.search.data = {
             parent: '"modalify".Message'
         },
         {
-            id: 11,
+            id: 12,
             kind: 256,
             name: 'Options',
             url: 'interfaces/_modalify_.options.html',
@@ -106,7 +114,7 @@ typedoc.search.data = {
             parent: '"modalify"'
         },
         {
-            id: 12,
+            id: 13,
             kind: 1024,
             name: 'name',
             url: 'interfaces/_modalify_.options.html#name',
@@ -114,7 +122,7 @@ typedoc.search.data = {
             parent: '"modalify".Options'
         },
         {
-            id: 13,
+            id: 14,
             kind: 1024,
             name: 'DOMDriverKey',
             url: 'interfaces/_modalify_.options.html#domdriverkey',
@@ -122,7 +130,7 @@ typedoc.search.data = {
             parent: '"modalify".Options'
         },
         {
-            id: 14,
+            id: 15,
             kind: 1024,
             name: 'center',
             url: 'interfaces/_modalify_.options.html#center',
@@ -130,7 +138,7 @@ typedoc.search.data = {
             parent: '"modalify".Options'
         },
         {
-            id: 15,
+            id: 16,
             kind: 1024,
             name: 'modalContainerClass',
             url: 'interfaces/_modalify_.options.html#modalcontainerclass',
@@ -138,7 +146,7 @@ typedoc.search.data = {
             parent: '"modalify".Options'
         },
         {
-            id: 16,
+            id: 17,
             kind: 1024,
             name: 'wrapperClass',
             url: 'interfaces/_modalify_.options.html#wrapperclass',
@@ -146,7 +154,7 @@ typedoc.search.data = {
             parent: '"modalify".Options'
         },
         {
-            id: 17,
+            id: 18,
             kind: 1024,
             name: 'background',
             url: 'interfaces/_modalify_.options.html#background',
@@ -154,7 +162,7 @@ typedoc.search.data = {
             parent: '"modalify".Options'
         },
         {
-            id: 18,
+            id: 19,
             kind: 1024,
             name: 'zIndex',
             url: 'interfaces/_modalify_.options.html#zindex',
@@ -162,7 +170,7 @@ typedoc.search.data = {
             parent: '"modalify".Options'
         },
         {
-            id: 19,
+            id: 20,
             kind: 4194304,
             name: 'Sinks',
             url: 'modules/_modalify_.html#sinks',
@@ -170,7 +178,7 @@ typedoc.search.data = {
             parent: '"modalify"'
         },
         {
-            id: 20,
+            id: 21,
             kind: 4194304,
             name: 'Sources',
             url: 'modules/_modalify_.html#sources',
@@ -178,7 +186,7 @@ typedoc.search.data = {
             parent: '"modalify"'
         },
         {
-            id: 21,
+            id: 22,
             kind: 4194304,
             name: 'Component',
             url: 'modules/_modalify_.html#component',
@@ -186,7 +194,7 @@ typedoc.search.data = {
             parent: '"modalify"'
         },
         {
-            id: 22,
+            id: 23,
             kind: 65536,
             name: '__type',
             url: 'modules/_modalify_.html#component.__type',
@@ -195,7 +203,7 @@ typedoc.search.data = {
             parent: '"modalify".Component'
         },
         {
-            id: 23,
+            id: 24,
             kind: 4194304,
             name: 'ModalAction',
             url: 'modules/_modalify_.html#modalaction',
@@ -203,7 +211,7 @@ typedoc.search.data = {
             parent: '"modalify"'
         },
         {
-            id: 24,
+            id: 25,
             kind: 64,
             name: 'modalify',
             url: 'modules/_modalify_.html#modalify',
@@ -211,7 +219,7 @@ typedoc.search.data = {
             parent: '"modalify"'
         },
         {
-            id: 25,
+            id: 26,
             kind: 64,
             name: 'centerHTML',
             url: 'modules/_modalify_.html#centerhtml',
@@ -219,7 +227,7 @@ typedoc.search.data = {
             parent: '"modalify"'
         },
         {
-            id: 26,
+            id: 27,
             kind: 64,
             name: 'displayModals',
             url: 'modules/_modalify_.html#displaymodals',
@@ -228,7 +236,7 @@ typedoc.search.data = {
             parent: '"modalify"'
         },
         {
-            id: 27,
+            id: 28,
             kind: 64,
             name: 'wrapModals',
             url: 'modules/_modalify_.html#wrapmodals',
@@ -237,7 +245,7 @@ typedoc.search.data = {
             parent: '"modalify"'
         },
         {
-            id: 28,
+            id: 29,
             kind: 64,
             name: 'addStyles',
             url: 'modules/_modalify_.html#addstyles',
