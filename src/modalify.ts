@@ -12,6 +12,7 @@ export interface Open {
     type: 'open';
     component: Component;
     sources?: Sources; //To use proper isolation scopes
+    backgroundOverlayClose?: boolean; //Default is true
 }
 
 export interface Close {
@@ -70,6 +71,28 @@ export function modalify(
                     } else if (curr.type === 'open') {
                         const _sources: Sources =
                             curr.sources !== undefined ? curr.sources : sources;
+
+                        let overlayClose$ = xs.never();
+
+                        if (curr.backgroundOverlayClose !== false) {
+                            overlayClose$ = xs
+                                .fromObservable(
+                                    sources[DOMDriverKey].select(
+                                        'div.cyclejs-modal'
+                                    ).events('click')
+                                )
+                                .map((ev: any) => {
+                                    ev.stopPropagation();
+                                    return ev;
+                                })
+                                .filter(
+                                    (e: any) =>
+                                        e.target ===
+                                        (e.currentTarget || e.ownerTarget)
+                                )
+                                .mapTo({ type: 'close' });
+                        }
+
                         const componentSinks: Sinks = curr.component(_sources);
                         const xsComponentSinks: Sinks = Object.keys(
                             componentSinks
@@ -81,7 +104,16 @@ export function modalify(
                                 (prev, curr) => Object.assign(prev, curr),
                                 {}
                             );
-                        return [...acc, xsComponentSinks];
+                        return [
+                            ...acc,
+                            {
+                                ...xsComponentSinks,
+                                modal: xs.merge(
+                                    xsComponentSinks.modal || xs.never(),
+                                    overlayClose$
+                                )
+                            }
+                        ];
                     }
                     return acc;
                 }, []);
@@ -144,7 +176,8 @@ export function centerHTML(children: VNode[]): VNode {
             style: {
                 width: '100%',
                 height: '100%',
-                position: 'relative'
+                position: 'relative',
+                'pointer-events': 'none'
             }
         },
         children.map(child =>
@@ -157,7 +190,8 @@ export function centerHTML(children: VNode[]): VNode {
                         left: '50%',
                         '-ms-transform': 'translate(-50%, -50%)',
                         '-webkit-transform': 'translate(-50%, -50%)',
-                        transform: 'translate(-50%, -50%)'
+                        transform: 'translate(-50%, -50%)',
+                        'pointer-events': 'auto'
                     }
                 },
                 [child]
@@ -190,7 +224,7 @@ function displayModals(
             width: '100%',
             height: '100%'
         },
-        h('div', {}, [centerHTML(processedModals)])
+        h('div.cyclejs-modal', {}, [centerHTML(processedModals)])
     );
 }
 
