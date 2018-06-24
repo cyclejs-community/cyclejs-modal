@@ -13,18 +13,17 @@ export interface Open {
     component: Component;
     sources?: Sources; //To use proper isolation scopes
     backgroundOverlayClose?: boolean; //Default is true
+    id?: string; //To allow for `select(id)` on the source, will not merge sinks at top level
+    namespace?: Scope[]; //used internally
 }
 
 export interface Close {
     type: 'close';
     count?: number; //Default is one
-}
-export interface Message {
-    type: 'message';
-    payload: any;
+    namespace?: Scope[]; //used internally
 }
 
-export type ModalAction = Open | Close | Message;
+export type ModalAction = Open | Close;
 
 export interface Options {
     name?: string;
@@ -34,6 +33,55 @@ export interface Options {
     wrapperClass?: string;
     background?: string;
     zIndex?: number;
+}
+
+export type Scope = string | number;
+
+export interface SinksObject {
+    id: string | undefined;
+    namespace: Scope[];
+    sinks$: Stream<any>;
+}
+
+export class ModalSource {
+    constructor(
+        private _namespace: Scope[],
+        private _sinks$$: Stream<SinksObject> = xs.create<SinksObject>()
+    ) {}
+
+    public select(id: string): ModalSource {
+        return new ModalSource(
+            this._namespace,
+            this._sinks$$.filter(o => o.id !== undefined && o.id === id)
+        );
+    }
+
+    public sinks(): Stream<any>;
+    public sinks(driverNames: string[]): any;
+    public sinks(driverNames?: string[]): any | Stream<any> {
+        if (driverNames) {
+            return extractSinks(this.sinks(), driverNames);
+        }
+        return this._sinks$$.map(o => o.sinks$).flatten();
+    }
+
+    public isolateSource(source: ModalSource, scope: Scope) {
+        return new ModalSource(
+            (source as any)._namespace.concat(scope),
+            (source as any)._sinks$$
+                .filter(o => o.namespace[0] === scope)
+                .map(o => ({ ...o, namespace: o.namespace.slice(1) }))
+        );
+    }
+
+    public isolateSink(modal$: Stream<ModalAction>, scope: Scope) {
+        return modal$.map(action => ({
+            ...action,
+            namespace: action.namespace
+                ? action.namespace
+                : this._namespace.concat(scope)
+        }));
+    }
 }
 
 export function modalify(
@@ -49,11 +97,11 @@ export function modalify(
     }: Options = {}
 ): Component {
     return function(sources: Sources): Sinks {
-        const messageProxy$: Stream<Message> = xs.create<Message>();
+        const modalSource = new ModalSource([]);
 
         const parentSinks: Sinks = main({
             ...sources,
-            [name]: adapt(messageProxy$)
+            [name]: modalSource
         });
 
         const sinks: Sinks = Object.keys(parentSinks)
@@ -62,11 +110,21 @@ export function modalify(
 
         if (sinks[name]) {
             const modalProxy$: Stream<ModalAction> = xs.create<ModalAction>();
-            const modalStack$: Stream<Sinks[]> = xs
+            const modalStack$: Stream<
+                [string | undefined, Scope[], Sinks][]
+            > = xs
                 .merge(sinks[name] as Stream<ModalAction>, modalProxy$)
                 .fold((acc, curr) => {
                     if (curr.type === 'close') {
                         const count: number = curr.count || 1;
+                        for (let i = 0; i < Math.min(acc.length, count); i++) {
+                            const [id, namespace, _] = acc[acc.length - i - 1];
+                            (modalSource as any)._sinks$$.shamefullySendNext({
+                                id,
+                                namespace,
+                                sinks$: xs.never()
+                            });
+                        }
                         return acc.slice(0, Math.max(acc.length - count, 0));
                     } else if (curr.type === 'open') {
                         const _sources: Sources =
@@ -104,22 +162,35 @@ export function modalify(
                                 (prev, curr) => Object.assign(prev, curr),
                                 {}
                             );
-                        return [
-                            ...acc,
-                            {
-                                ...xsComponentSinks,
-                                modal: xs.merge(
-                                    xsComponentSinks.modal || xs.never(),
-                                    overlayClose$
-                                )
-                            }
-                        ];
+
+                        const domlessSinks: Sinks = { ...componentSinks };
+                        delete domlessSinks[DOMDriverKey];
+
+                        (modalSource as any)._sinks$$.shamefullySendNext({
+                            id: curr.id,
+                            namespace: curr.namespace || [],
+                            sinks$: xs.never().startWith(domlessSinks)
+                        });
+
+                        return acc.concat([
+                            [
+                                curr.id,
+                                curr.namespace || [],
+                                {
+                                    ...xsComponentSinks,
+                                    modal: xs.merge(
+                                        xsComponentSinks[name] || xs.never(),
+                                        overlayClose$
+                                    )
+                                }
+                            ]
+                        ]);
                     }
                     return acc;
                 }, []);
 
             const modalVDom$: Stream<VNode[]> = modalStack$
-                .map<Stream<VNode>[]>(arr => arr.map(s => s[DOMDriverKey]))
+                .map<Stream<VNode>[]>(arr => arr.map(s => s[2][DOMDriverKey]))
                 .map<Stream<VNode[]>>(arr => xs.combine(...arr))
                 .flatten();
 
@@ -147,15 +218,15 @@ export function modalify(
                 );
 
             const extractedSinks: Sinks = extractSinks(
-                modalStack$.map<Sinks>(mergeSinks),
+                modalStack$
+                    .map(arr =>
+                        arr.filter(s => s[0] === undefined).map(s => s[2])
+                    )
+                    .map<Sinks>(mergeSinks),
                 Object.keys(sinks)
             );
 
             modalProxy$.imitate(extractedSinks[name]);
-            messageProxy$.imitate(
-                extractedSinks[name].filter(a => a.type === 'message')
-            );
-
             const newSinks = {
                 ...mergeSinks([extractedSinks, sinks]),
                 [DOMDriverKey]: mergedVDom$

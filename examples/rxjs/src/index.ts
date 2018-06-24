@@ -4,11 +4,10 @@ import { run } from '@cycle/rxjs-run';
 import { button, div, span, makeDOMDriver, DOMSource, VNode } from '@cycle/dom';
 import isolate from '@cycle/isolate';
 
-import { modalify, Message, ModalAction } from '../../../src/modalify';
+import { modalify, ModalAction } from '../../../src/modalify';
 
 interface Sources {
     DOM: DOMSource;
-    modal: Observable<Message>;
 }
 
 interface Sinks {

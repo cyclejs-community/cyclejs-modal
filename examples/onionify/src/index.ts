@@ -4,19 +4,19 @@ import { button, div, span, makeDOMDriver, DOMSource, VNode } from '@cycle/dom';
 import onionify, { StateSource } from 'cycle-onionify';
 import isolate from '@cycle/isolate';
 
-import { modalify, Message, ModalAction } from '../../../src/modalify';
+import { modalify, ModalSource, ModalAction } from '../../../src/modalify';
 
 interface State {
     i: number;
     child: {
-        foo: string;
+        foo?: string;
     };
 }
 type Reducer = (s: State) => State;
 
 interface Sources {
     DOM: DOMSource;
-    modal: Stream<Message>;
+    modal: ModalSource;
     onion: StateSource<State>;
 }
 
@@ -27,8 +27,10 @@ interface Sinks {
 }
 
 function main(sources: Sources): Sinks {
-    const { DOM, onion } = sources;
-    const isolatedModal = isolate(modal, 'child');
+    const { DOM, onion, modal } = sources;
+    const isolatedModal = isolate(Modal, 'child');
+
+    const modalSinks: Sinks = modal.sinks(['onion', 'modal']);
 
     return {
         DOM: onion.state$.map(state =>
@@ -37,30 +39,41 @@ function main(sources: Sources): Sinks {
                 button('.button', ['open modal'])
             ])
         ),
-        onion: xs.of(() => ({ i: 7, child: { foo: 'something' } })),
-        modal: DOM.select('.button')
-            .events('click')
-            .mapTo({
-                type: 'open',
-                component: isolatedModal,
-                sources
-            } as ModalAction)
+        onion: xs.merge(
+            xs.of(() => ({ i: 7, child: { foo: 'something' } })),
+            modalSinks.onion
+        ),
+        modal: xs.merge(
+            DOM.select('.button')
+                .events('click')
+                .mapTo({
+                    type: 'open',
+                    component: isolatedModal,
+                    sources,
+                    id: 'myModal'
+                } as ModalAction),
+            modalSinks.modal
+        )
     };
 }
 
-function modal({ DOM, onion }: Sources): Sinks {
+function Modal({ DOM, onion }: Sources): any {
     return {
         DOM: onion.state$.map(state =>
             div('.div', [
                 span('.span', [
                     `This is a modal. My state: ${JSON.stringify(state)} :)`
                 ]),
+                button('.set', ['Set to "SOMETHING"']),
                 button('.button', ['close'])
             ])
         ),
         modal: DOM.select('.button')
             .events('click')
-            .mapTo({ type: 'close' } as ModalAction)
+            .mapTo({ type: 'close' } as ModalAction),
+        onion: DOM.select('.set')
+            .events('click')
+            .mapTo(() => ({ foo: 'SOMETHING' }))
     };
 }
 
