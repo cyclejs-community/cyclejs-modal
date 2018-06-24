@@ -4,8 +4,11 @@ typedoc.search.data = {
     kinds: {
         '1': 'External module',
         '64': 'Function',
+        '128': 'Class',
         '256': 'Interface',
+        '512': 'Constructor',
         '1024': 'Property',
+        '2048': 'Method',
         '65536': 'Type literal',
         '4194304': 'Type alias'
     },
@@ -59,6 +62,22 @@ typedoc.search.data = {
         },
         {
             id: 6,
+            kind: 1024,
+            name: 'id',
+            url: 'interfaces/_modalify_.open.html#id',
+            classes: 'tsd-kind-property tsd-parent-kind-interface',
+            parent: '"modalify".Open'
+        },
+        {
+            id: 7,
+            kind: 1024,
+            name: 'namespace',
+            url: 'interfaces/_modalify_.open.html#namespace',
+            classes: 'tsd-kind-property tsd-parent-kind-interface',
+            parent: '"modalify".Open'
+        },
+        {
+            id: 8,
             kind: 256,
             name: 'Close',
             url: 'interfaces/_modalify_.close.html',
@@ -66,7 +85,7 @@ typedoc.search.data = {
             parent: '"modalify"'
         },
         {
-            id: 7,
+            id: 9,
             kind: 1024,
             name: 'type',
             url: 'interfaces/_modalify_.close.html#type',
@@ -74,7 +93,7 @@ typedoc.search.data = {
             parent: '"modalify".Close'
         },
         {
-            id: 8,
+            id: 10,
             kind: 1024,
             name: 'count',
             url: 'interfaces/_modalify_.close.html#count',
@@ -82,28 +101,12 @@ typedoc.search.data = {
             parent: '"modalify".Close'
         },
         {
-            id: 9,
-            kind: 256,
-            name: 'Message',
-            url: 'interfaces/_modalify_.message.html',
-            classes: 'tsd-kind-interface tsd-parent-kind-external-module',
-            parent: '"modalify"'
-        },
-        {
-            id: 10,
-            kind: 1024,
-            name: 'type',
-            url: 'interfaces/_modalify_.message.html#type',
-            classes: 'tsd-kind-property tsd-parent-kind-interface',
-            parent: '"modalify".Message'
-        },
-        {
             id: 11,
             kind: 1024,
-            name: 'payload',
-            url: 'interfaces/_modalify_.message.html#payload',
+            name: 'namespace',
+            url: 'interfaces/_modalify_.close.html#namespace',
             classes: 'tsd-kind-property tsd-parent-kind-interface',
-            parent: '"modalify".Message'
+            parent: '"modalify".Close'
         },
         {
             id: 12,
@@ -171,6 +174,102 @@ typedoc.search.data = {
         },
         {
             id: 20,
+            kind: 256,
+            name: 'SinksObject',
+            url: 'interfaces/_modalify_.sinksobject.html',
+            classes: 'tsd-kind-interface tsd-parent-kind-external-module',
+            parent: '"modalify"'
+        },
+        {
+            id: 21,
+            kind: 1024,
+            name: 'id',
+            url: 'interfaces/_modalify_.sinksobject.html#id',
+            classes: 'tsd-kind-property tsd-parent-kind-interface',
+            parent: '"modalify".SinksObject'
+        },
+        {
+            id: 22,
+            kind: 1024,
+            name: 'namespace',
+            url: 'interfaces/_modalify_.sinksobject.html#namespace',
+            classes: 'tsd-kind-property tsd-parent-kind-interface',
+            parent: '"modalify".SinksObject'
+        },
+        {
+            id: 23,
+            kind: 1024,
+            name: 'sinks$',
+            url: 'interfaces/_modalify_.sinksobject.html#sinks_',
+            classes: 'tsd-kind-property tsd-parent-kind-interface',
+            parent: '"modalify".SinksObject'
+        },
+        {
+            id: 24,
+            kind: 128,
+            name: 'ModalSource',
+            url: 'classes/_modalify_.modalsource.html',
+            classes: 'tsd-kind-class tsd-parent-kind-external-module',
+            parent: '"modalify"'
+        },
+        {
+            id: 25,
+            kind: 512,
+            name: 'constructor',
+            url: 'classes/_modalify_.modalsource.html#constructor',
+            classes: 'tsd-kind-constructor tsd-parent-kind-class',
+            parent: '"modalify".ModalSource'
+        },
+        {
+            id: 26,
+            kind: 1024,
+            name: '_namespace',
+            url: 'classes/_modalify_.modalsource.html#_namespace',
+            classes: 'tsd-kind-property tsd-parent-kind-class tsd-is-private',
+            parent: '"modalify".ModalSource'
+        },
+        {
+            id: 27,
+            kind: 1024,
+            name: '_sinks$$',
+            url: 'classes/_modalify_.modalsource.html#_sinks__',
+            classes: 'tsd-kind-property tsd-parent-kind-class tsd-is-private',
+            parent: '"modalify".ModalSource'
+        },
+        {
+            id: 28,
+            kind: 2048,
+            name: 'select',
+            url: 'classes/_modalify_.modalsource.html#select',
+            classes: 'tsd-kind-method tsd-parent-kind-class',
+            parent: '"modalify".ModalSource'
+        },
+        {
+            id: 29,
+            kind: 2048,
+            name: 'sinks',
+            url: 'classes/_modalify_.modalsource.html#sinks',
+            classes: 'tsd-kind-method tsd-parent-kind-class',
+            parent: '"modalify".ModalSource'
+        },
+        {
+            id: 30,
+            kind: 2048,
+            name: 'isolateSource',
+            url: 'classes/_modalify_.modalsource.html#isolatesource',
+            classes: 'tsd-kind-method tsd-parent-kind-class',
+            parent: '"modalify".ModalSource'
+        },
+        {
+            id: 31,
+            kind: 2048,
+            name: 'isolateSink',
+            url: 'classes/_modalify_.modalsource.html#isolatesink',
+            classes: 'tsd-kind-method tsd-parent-kind-class',
+            parent: '"modalify".ModalSource'
+        },
+        {
+            id: 32,
             kind: 4194304,
             name: 'Sinks',
             url: 'modules/_modalify_.html#sinks',
@@ -178,7 +277,7 @@ typedoc.search.data = {
             parent: '"modalify"'
         },
         {
-            id: 21,
+            id: 33,
             kind: 4194304,
             name: 'Sources',
             url: 'modules/_modalify_.html#sources',
@@ -186,7 +285,7 @@ typedoc.search.data = {
             parent: '"modalify"'
         },
         {
-            id: 22,
+            id: 34,
             kind: 4194304,
             name: 'Component',
             url: 'modules/_modalify_.html#component',
@@ -194,7 +293,7 @@ typedoc.search.data = {
             parent: '"modalify"'
         },
         {
-            id: 23,
+            id: 35,
             kind: 65536,
             name: '__type',
             url: 'modules/_modalify_.html#component.__type',
@@ -203,7 +302,7 @@ typedoc.search.data = {
             parent: '"modalify".Component'
         },
         {
-            id: 24,
+            id: 36,
             kind: 4194304,
             name: 'ModalAction',
             url: 'modules/_modalify_.html#modalaction',
@@ -211,7 +310,15 @@ typedoc.search.data = {
             parent: '"modalify"'
         },
         {
-            id: 25,
+            id: 37,
+            kind: 4194304,
+            name: 'Scope',
+            url: 'modules/_modalify_.html#scope',
+            classes: 'tsd-kind-type-alias tsd-parent-kind-external-module',
+            parent: '"modalify"'
+        },
+        {
+            id: 38,
             kind: 64,
             name: 'modalify',
             url: 'modules/_modalify_.html#modalify',
@@ -219,7 +326,7 @@ typedoc.search.data = {
             parent: '"modalify"'
         },
         {
-            id: 26,
+            id: 39,
             kind: 64,
             name: 'centerHTML',
             url: 'modules/_modalify_.html#centerhtml',
@@ -227,7 +334,7 @@ typedoc.search.data = {
             parent: '"modalify"'
         },
         {
-            id: 27,
+            id: 40,
             kind: 64,
             name: 'displayModals',
             url: 'modules/_modalify_.html#displaymodals',
@@ -236,7 +343,7 @@ typedoc.search.data = {
             parent: '"modalify"'
         },
         {
-            id: 28,
+            id: 41,
             kind: 64,
             name: 'wrapModals',
             url: 'modules/_modalify_.html#wrapmodals',
@@ -245,7 +352,7 @@ typedoc.search.data = {
             parent: '"modalify"'
         },
         {
-            id: 29,
+            id: 42,
             kind: 64,
             name: 'addStyles',
             url: 'modules/_modalify_.html#addstyles',

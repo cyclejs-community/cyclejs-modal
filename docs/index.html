@@ -72,6 +72,13 @@
 				<h2 id="example">Example</h2>
 				<p>You can find the examples in the <a href="https://github.com/cyclejs-community/cyclejs-modal/tree/master/examples">examples/</a> folder</p>
 				<p>Since Version 5.2.0 you can also pass the sources to the created modal. This allows the modal to access the isolation scope of its creation place. Take a look at the <a href="https://github.com/cyclejs-community/cyclejs-modal/blob/master/examples/onionify/src/index.ts">onionify example</a> to see this in action.</p>
+				<p>Since Version 5.3.0 modals can be closed by clicking on the gray overlay. You can disable that in the <code>open</code> message:</p>
+				<pre><code class="lang-js">{
+    <span class="hljs-attr">type</span>: <span class="hljs-string">'open'</span>,
+    <span class="hljs-attr">component</span>: MyModal,
+    <span class="hljs-attr">backgroundOverlayClose</span>: <span class="hljs-literal">false</span>
+}
+</code></pre>
 				<pre><code class="lang-js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">main</span>(<span class="hljs-params">{ DOM }</span>) </span>{
     <span class="hljs-keyword">return</span> {
         <span class="hljs-attr">DOM</span>: xs.of(button(<span class="hljs-string">'.button'</span>, [<span class="hljs-string">'open modal'</span>])),

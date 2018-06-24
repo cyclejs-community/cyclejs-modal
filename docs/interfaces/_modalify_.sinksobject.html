@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Message | cyclejs-modal</title>
+	<title>SinksObject | cyclejs-modal</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -59,10 +59,10 @@
 					<a href="../modules/_modalify_.html">&quot;modalify&quot;</a>
 				</li>
 				<li>
-					<a href="_modalify_.message.html">Message</a>
+					<a href="_modalify_.sinksobject.html">SinksObject</a>
 				</li>
 			</ul>
-			<h1>Interface Message</h1>
+			<h1>Interface SinksObject</h1>
 		</div>
 	</div>
 </header>
@@ -73,7 +73,7 @@
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="target">Message</span>
+						<span class="target">SinksObject</span>
 					</li>
 				</ul>
 			</section>
@@ -84,8 +84,9 @@
 						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_modalify_.message.html#payload" class="tsd-kind-icon">payload</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_modalify_.message.html#type" class="tsd-kind-icon">type</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_modalify_.sinksobject.html#id" class="tsd-kind-icon">id</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_modalify_.sinksobject.html#namespace" class="tsd-kind-icon">namespace</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_modalify_.sinksobject.html#sinks_" class="tsd-kind-icon">sinks$</a></li>
 							</ul>
 						</section>
 					</div>
@@ -94,22 +95,32 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Properties</h2>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="payload" class="tsd-anchor"></a>
-					<h3>payload</h3>
-					<div class="tsd-signature tsd-kind-icon">payload<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span></div>
+					<a name="id" class="tsd-anchor"></a>
+					<h3>id</h3>
+					<div class="tsd-signature tsd-kind-icon">id<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">undefined</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/cyclejs-community/cyclejs-modal/blob/07a82df/src/modalify.ts#L24">modalify.ts:24</a></li>
+							<li>Defined in <a href="https://github.com/cyclejs-community/cyclejs-modal/blob/998b38a/src/modalify.ts#L41">modalify.ts:41</a></li>
 						</ul>
 					</aside>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="type" class="tsd-anchor"></a>
-					<h3>type</h3>
-					<div class="tsd-signature tsd-kind-icon">type<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">"message"</span></div>
+					<a name="namespace" class="tsd-anchor"></a>
+					<h3>namespace</h3>
+					<div class="tsd-signature tsd-kind-icon">namespace<span class="tsd-signature-symbol">:</span> <a href="../modules/_modalify_.html#scope" class="tsd-signature-type">Scope</a><span class="tsd-signature-symbol">[]</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/cyclejs-community/cyclejs-modal/blob/07a82df/src/modalify.ts#L23">modalify.ts:23</a></li>
+							<li>Defined in <a href="https://github.com/cyclejs-community/cyclejs-modal/blob/998b38a/src/modalify.ts#L42">modalify.ts:42</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="sinks_" class="tsd-anchor"></a>
+					<h3>sinks$</h3>
+					<div class="tsd-signature tsd-kind-icon">sinks$<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Stream</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/cyclejs-community/cyclejs-modal/blob/998b38a/src/modalify.ts#L43">modalify.ts:43</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -128,35 +139,44 @@
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
+					<li class=" tsd-kind-class tsd-parent-kind-external-module">
+						<a href="../classes/_modalify_.modalsource.html" class="tsd-kind-icon">Modal<wbr>Source</a>
+					</li>
 					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
 						<a href="_modalify_.close.html" class="tsd-kind-icon">Close</a>
 					</li>
-				</ul>
-				<ul class="current">
-					<li class="current tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="_modalify_.message.html" class="tsd-kind-icon">Message</a>
-						<ul>
-							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="_modalify_.message.html#payload" class="tsd-kind-icon">payload</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="_modalify_.message.html#type" class="tsd-kind-icon">type</a>
-							</li>
-						</ul>
-					</li>
-				</ul>
-				<ul class="after-current">
 					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
 						<a href="_modalify_.open.html" class="tsd-kind-icon">Open</a>
 					</li>
 					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
 						<a href="_modalify_.options.html" class="tsd-kind-icon">Options</a>
 					</li>
+				</ul>
+				<ul class="current">
+					<li class="current tsd-kind-interface tsd-parent-kind-external-module">
+						<a href="_modalify_.sinksobject.html" class="tsd-kind-icon">Sinks<wbr>Object</a>
+						<ul>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="_modalify_.sinksobject.html#id" class="tsd-kind-icon">id</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="_modalify_.sinksobject.html#namespace" class="tsd-kind-icon">namespace</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="_modalify_.sinksobject.html#sinks_" class="tsd-kind-icon">sinks$</a>
+							</li>
+						</ul>
+					</li>
+				</ul>
+				<ul class="after-current">
 					<li class=" tsd-kind-type-alias tsd-parent-kind-external-module">
 						<a href="../modules/_modalify_.html#component" class="tsd-kind-icon">Component</a>
 					</li>
 					<li class=" tsd-kind-type-alias tsd-parent-kind-external-module">
 						<a href="../modules/_modalify_.html#modalaction" class="tsd-kind-icon">Modal<wbr>Action</a>
+					</li>
+					<li class=" tsd-kind-type-alias tsd-parent-kind-external-module">
+						<a href="../modules/_modalify_.html#scope" class="tsd-kind-icon">Scope</a>
 					</li>
 					<li class=" tsd-kind-type-alias tsd-parent-kind-external-module">
 						<a href="../modules/_modalify_.html#sinks" class="tsd-kind-icon">Sinks</a>
