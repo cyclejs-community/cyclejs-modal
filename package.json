@@ -9,11 +9,12 @@
     "precommit": "lint-staged",
     "format": "prettier --write './{src,examples}/**/*.{ts,tsx}'",
     "build": "rimraf build/* && tsc -d --module ES6 --outDir build/es6 && tsc -d && rimraf build/examples",
-    "documentation": "typedoc --out docs src && cp-cli .nojekyll docs/.nojekyll",
+    "documentation": "typedoc --out docs src && touch docs/.nojekyll",
     "prepublishOnly": "npm run build && npm run documentation",
-    "examples": "npm run build && npm run examples:simple && npm run examples:rxjs && npm run examples:onionify",
+    "examples": "npm run build && npm run examples:simple && npm run examples:rxjs && npm run examples:onionify && npm run examples:animated",
     "examples:simple": "browserify build/cjs/examples/simple/src/index.js -o examples/simple/build/index.js && opn examples/simple/index.html",
     "examples:onionify": "browserify build/cjs/examples/onionify/src/index.js -o examples/onionify/build/index.js && opn examples/onionify/index.html",
+    "examples:animated": "browserify build/cjs/examples/animated/src/index.js -o examples/animated/build/index.js && opn examples/animated/index.html",
     "examples:rxjs": "browserify build/cjs/examples/rxjs/src/index.js -o examples/rxjs/build/index.js && opn examples/rxjs/index.html"
   },
   "prettier": {
@@ -41,28 +42,28 @@
   },
   "homepage": "https://github.com/cyclejs-community/cyclejs-modal#readme",
   "dependencies": {
-    "@cycle/dom": "^20.2.0",
-    "@cycle/isolate": "^3.2.0",
-    "@cycle/run": "^4.1.0",
-    "cyclejs-utils": "^3.1.0",
-    "xstream": "^11.2.0"
+    "@cycle/dom": "^21.1.0",
+    "@cycle/isolate": "^3.4.0",
+    "@cycle/run": "^4.4.0",
+    "cyclejs-utils": "^3.2.0",
+    "xstream": "^11.7.0"
   },
   "devDependencies": {
-    "@cycle/rxjs-run": "^8.0.0",
-    "babel-preset-es2015": "^6.24.1",
-    "babelify": "^8.0.0",
-    "browserify": "^16.2.0",
+    "@cycle/rxjs-run": "^9.3.0",
+    "babel-preset-env": "^1.7.0",
+    "babelify": "^10.0.0",
+    "browserify": "^16.2.2",
     "cp-cli": "^1.1.2",
-    "cycle-onionify": "^5.0.0",
+    "cycle-onionify": "^6.1.0",
     "husky": "^0.14.3",
-    "lint-staged": "^7.2.0",
+    "lint-staged": "^7.3.0",
     "mkdirp": "^0.5.1",
     "opn-cli": "^3.1.0",
-    "prettier": "^1.12.0",
-    "release-it": "^7.4.7",
+    "prettier": "^1.14.3",
+    "release-it": "^7.6.1",
     "rimraf": "^2.6.2",
-    "rxjs": "^5.5.10",
-    "typedoc": "^0.11.1",
-    "typescript": "^2.8.1"
+    "rxjs": "^5.5.12",
+    "typedoc": "^0.12.0",
+    "typescript": "^2.8.4"
   }
 }
