@@ -50,6 +50,7 @@
   },
   "devDependencies": {
     "@cycle/rxjs-run": "^10.1.0",
+    "@cycle/state": "^1.0.0",
     "babel-preset-env": "^1.7.0",
     "babelify": "^10.0.0",
     "browserify": "^16.2.3",
@@ -63,7 +64,8 @@
     "release-it": "^8.2.0",
     "rimraf": "^2.6.2",
     "rxjs": "^6.3.3",
+    "snabbdom": "^0.7.2",
     "typedoc": "^0.13.0",
-    "typescript": "^3.1.6"
+    "typescript": "^3.2.1"
   }
 }

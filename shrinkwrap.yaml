@@ -6,6 +6,7 @@ dependencies:
   xstream: 11.7.0
 devDependencies:
   '@cycle/rxjs-run': 10.1.0
+  '@cycle/state': 1.0.0
   babel-preset-env: 1.7.0
   babelify: 10.0.0
   browserify: 16.2.3
@@ -19,8 +20,9 @@ devDependencies:
   release-it: 8.2.0
   rimraf: 2.6.2
   rxjs: 6.3.3
+  snabbdom: 0.7.2
   typedoc: 0.13.0
-  typescript: 3.1.6
+  typescript: 3.2.1
 packages:
   /@cycle/dom/22.0.0:
     dependencies:
@@ -34,33 +36,14 @@ packages:
       node: '>=0.10.0'
     resolution:
       integrity: sha512-Vj6cZjJNz4JAREEz34f84Fvnqjjgz5R3BCg+QJ5o1n7ebrBBDuNr4a7oWxCnkZYdGccAXNA0HjP5tOALPTSoTA==
-  /@cycle/isolate/3.4.0:
-    dependencies:
-      '@cycle/run': 4.4.0
-      xstream: 11.7.0
-    dev: true
-    engines:
-      node: '>=0.10.0'
-    resolution:
-      integrity: sha512-mOAlwLeTr6wTdHwKWAfaFeuKeD540kKcJlLVKsqLhbfLp6orF1B3CzMfFNlmqNY30t6o6TORCFfV+0EATK9Y7Q==
   /@cycle/isolate/4.1.0:
     dependencies:
       '@cycle/run': 5.1.0
       xstream: 11.7.0
-    dev: false
     engines:
       node: '>=0.10.0'
     resolution:
       integrity: sha512-nnuBqXZdak4fGeYWQFoXC4zmmTFYhIfArTKCpU5XmIgF4aqD0cQg02QBobczn86EJO7SpIuWUh7l8FF5IL4pNw==
-  /@cycle/run/4.4.0:
-    dependencies:
-      quicktask: 1.1.0
-      xstream: 11.7.0
-    dev: true
-    engines:
-      node: '>=0.12.0'
-    resolution:
-      integrity: sha512-vVxnTqKKlgasE+we9X2z3og8z5KouO2RMiIgHWkVek+NomsdaeZwfvbutqzm3VToEImaz0DE2Iln9AxtCOVjpQ==
   /@cycle/run/5.1.0:
     dependencies:
       quicktask: 1.1.0
@@ -86,7 +69,6 @@ packages:
       '@cycle/run': 5.1.0
       quicktask: 1.1.0
       xstream: 11.7.0
-    dev: false
     resolution:
       integrity: sha512-Uma3uDwWlAj5UBGbYKKrZQ+5Mkh3uJ6zLPG8aWMDdax/0zW4BiI6Fiw+Qy59vbApAcyy4cFVSjxBL+S04KhMJw==
   /@iamstarkov/listr-update-renderer/0.4.1/listr@0.14.3:
@@ -575,12 +557,10 @@ packages:
     dev: true
     resolution:
       integrity: sha1-ytnK0RkbWtY0vzCuCHI5HgZHvpU=
-      tarball: 'http://registry.npmjs.org/babel-plugin-syntax-async-functions/-/babel-plugin-syntax-async-functions-6.13.0.tgz'
   /babel-plugin-syntax-exponentiation-operator/6.13.0:
     dev: true
     resolution:
       integrity: sha1-nufoM3KQ2pUoggGmpX9BcDF4MN4=
-      tarball: 'http://registry.npmjs.org/babel-plugin-syntax-exponentiation-operator/-/babel-plugin-syntax-exponentiation-operator-6.13.0.tgz'
   /babel-plugin-syntax-trailing-function-commas/6.22.0:
     dev: true
     resolution:
@@ -813,7 +793,7 @@ packages:
       babel-plugin-transform-regenerator: 6.26.0
       browserslist: 3.2.8
       invariant: 2.2.4
-      semver: 5.5.1
+      semver: 5.6.0
     dev: true
     resolution:
       integrity: sha512-9OR2afuKDneX2/q2EurSftUYM0xGu4O2D9adAhVfADDhrYDaxXV0rBbevVYoY9n6nyX1PmQW/0jtpJvUNr9CHg==
@@ -1087,8 +1067,8 @@ packages:
       integrity: sha512-zQt/Gd1+W+IY+h/xX2NYMW4orQWhqSwyV+xsblycTtpOuB27h1fZhhNQuipJ4t79ohw4P4mMem0jp/ZkISQtjQ==
   /browserslist/3.2.8:
     dependencies:
-      caniuse-lite: 1.0.30000885
-      electron-to-chromium: 1.3.70
+      caniuse-lite: 1.0.30000914
+      electron-to-chromium: 1.3.88
     dev: true
     hasBin: true
     resolution:
@@ -1227,10 +1207,10 @@ packages:
       node: '>=6'
     resolution:
       integrity: sha512-faqwZqnWxbxn+F1d399ygeamQNy3lPp/H9H6rNrqYh4FSVCtcY+3cub1MxA8o9mDd55mM8Aghuu/kuyYA6VTsA==
-  /caniuse-lite/1.0.30000885:
+  /caniuse-lite/1.0.30000914:
     dev: true
     resolution:
-      integrity: sha512-cXKbYwpxBLd7qHyej16JazPoUacqoVuDhvR61U7Fr5vSxMUiodzcYa1rQYRYfZ5GexV03vGZHd722vNPLjPJGQ==
+      integrity: sha512-qqj0CL1xANgg6iDOybiPTIxtsmAnfIky9mBC35qgWrnK4WwmhqfpmkDYMYgwXJ8LRZ3/2jXlCntulO8mBaAgSg==
   /capture-stack-trace/1.0.1:
     dev: true
     engines:
@@ -1761,8 +1741,8 @@ packages:
       integrity: sha1-mI3zP+qxke95mmE2nddsF635V+o=
   /cycle-onionify/6.1.0:
     dependencies:
-      '@cycle/isolate': 3.4.0
-      '@cycle/run': 4.4.0
+      '@cycle/isolate': 4.1.0
+      '@cycle/run': 5.1.0
       quicktask: 1.1.0
       xstream: 11.7.0
     dev: true
@@ -1999,10 +1979,10 @@ packages:
     dev: true
     resolution:
       integrity: sha1-7gHdHKwO08vH/b6jfcCo8c4ALOI=
-  /electron-to-chromium/1.3.70:
+  /electron-to-chromium/1.3.88:
     dev: true
     resolution:
-      integrity: sha512-WYMjqCnPVS5JA+XvwEnpwucJpVi2+q9cdCFpbhxgWGsCtforFBEkuP9+nCyy/wnU/0SyLcLRIeZct9ayMGcXoQ==
+      integrity: sha512-UPV4NuQMKeUh1S0OWRvwg0PI8ASHN9kBC8yDTk1ROXLC85W5GnhTRu/MZu3Teqx3JjlQYuckuHYXSUSgtb3J+A==
   /elegant-spinner/1.0.1:
     dev: true
     engines:
@@ -2262,7 +2242,7 @@ packages:
       integrity: sha1-i/tVAr3kpNNs/e6gB/zKIdfjgq8=
   /fs-extra/5.0.0:
     dependencies:
-      graceful-fs: 4.1.11
+      graceful-fs: 4.1.15
       jsonfile: 4.0.0
       universalify: 0.1.2
     dev: true
@@ -2493,12 +2473,6 @@ packages:
       node: '>=4'
     resolution:
       integrity: sha512-qjUJ5U/hawxosMryILofZCkm3C84PLJS/0grRIpjAwu+Lkxxj5cxeCU25BG0/3mDSpXKTyZr8oh8wIgLaH0QCw==
-  /graceful-fs/4.1.11:
-    dev: true
-    engines:
-      node: '>=0.4.0'
-    resolution:
-      integrity: sha1-Dovf5NHduIVNZOBOp8AOKgJuVlg=
   /graceful-fs/4.1.15:
     dev: true
     resolution:
@@ -3681,7 +3655,6 @@ packages:
     dev: true
     resolution:
       integrity: sha1-hX/Kv8M5fSYluCKCYuhqp6ARsF0=
-      tarball: 'http://registry.npmjs.org/minimist/-/minimist-0.0.8.tgz'
   /minimist/1.2.0:
     dev: true
     resolution:
@@ -4691,11 +4664,6 @@ packages:
     hasBin: true
     resolution:
       integrity: sha512-WfG/X9+oATh81XtllIo/I8gOiY9EXRdv1cQdyykeXK17YcUW3EXUAi2To4pcH6nZtJPr7ZOpM5OMyWJZm+8Rsg==
-  /semver/5.5.1:
-    dev: true
-    hasBin: true
-    resolution:
-      integrity: sha512-PqpAxfrEhlSUWge8dwIp4tZnQ25DIOthpiaHNIthsjEFQD6EvqUKUDM7L8O2rShkFccYo1VjJR0coWfNkCubRw==
   /semver/5.6.0:
     dev: true
     hasBin: true
@@ -4815,7 +4783,6 @@ packages:
     resolution:
       integrity: sha512-NDWOVSUR6yPlxH2F9XRwnF59UObLnItfSXcIw6+azkyrEDqT2c8pZ85UHvjijsgdve3g19qsC0/69tB5eZqTvA==
   /snabbdom/0.7.2:
-    dev: false
     resolution:
       integrity: sha512-rDY283fYUB/3z2tjXsRRccsbVJqmGLtP+iI1tfa1DDHo2xZ49cq1leq9JmYyvZQhESuYJRY/is6WYhP2UuiRVg==
   /snapdragon-node/2.1.1:
@@ -5311,6 +5278,13 @@ packages:
     hasBin: true
     resolution:
       integrity: sha512-tDMYfVtvpb96msS1lDX9MEdHrW4yOuZ4Kdc4Him9oU796XldPYF/t2+uKoX0BBa0hXXwDlqYQbXY5Rzjzc5hBA==
+  /typescript/3.2.1:
+    dev: true
+    engines:
+      node: '>=4.2.0'
+    hasBin: true
+    resolution:
+      integrity: sha512-jw7P2z/h6aPT4AENXDGjcfHTu5CSqzsbZc6YlUIebTyBAq8XaKp78x7VcSh30xwSCcsu5irZkYZUSFP1MrAMbg==
   /uglify-js/3.4.9:
     dependencies:
       commander: 2.17.1
@@ -5533,7 +5507,6 @@ packages:
       node: '>=0.10.0'
     resolution:
       integrity: sha1-2Pw9KE3QV5T+hJc8rs3Rz4JP3YU=
-      tarball: 'http://registry.npmjs.org/wrap-ansi/-/wrap-ansi-2.1.0.tgz'
   /wrap-ansi/3.0.1:
     dependencies:
       string-width: 2.1.1
@@ -5624,6 +5597,7 @@ specifiers:
   '@cycle/isolate': ^4.1.0
   '@cycle/run': ^5.1.0
   '@cycle/rxjs-run': ^10.1.0
+  '@cycle/state': ^1.0.0
   babel-preset-env: ^1.7.0
   babelify: ^10.0.0
   browserify: ^16.2.3
@@ -5638,6 +5612,7 @@ specifiers:
   release-it: ^8.2.0
   rimraf: ^2.6.2
   rxjs: ^6.3.3
+  snabbdom: ^0.7.2
   typedoc: ^0.13.0
-  typescript: ^3.1.6
+  typescript: ^3.2.1
   xstream: ^11.7.0
