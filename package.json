@@ -45,25 +45,25 @@
     "@cycle/dom": "^22.0.0",
     "@cycle/isolate": "^4.1.0",
     "@cycle/run": "^5.1.0",
-    "cyclejs-utils": "^3.2.0",
+    "cyclejs-utils": "^4.0.2",
     "xstream": "^11.7.0"
   },
   "devDependencies": {
     "@cycle/rxjs-run": "^10.1.0",
     "babel-preset-env": "^1.7.0",
     "babelify": "^10.0.0",
-    "browserify": "^16.2.2",
+    "browserify": "^16.2.3",
     "cp-cli": "^1.1.2",
     "cycle-onionify": "^6.1.0",
-    "husky": "^0.14.3",
-    "lint-staged": "^7.3.0",
+    "husky": "^1.2.0",
+    "lint-staged": "^8.1.0",
     "mkdirp": "^0.5.1",
-    "opn-cli": "^3.1.0",
-    "prettier": "^1.14.3",
-    "release-it": "^7.6.1",
+    "opn-cli": "^4.0.0",
+    "prettier": "^1.15.3",
+    "release-it": "^8.2.0",
     "rimraf": "^2.6.2",
     "rxjs": "^6.3.3",
-    "typedoc": "^0.12.0",
+    "typedoc": "^0.13.0",
     "typescript": "^3.1.6"
   }
 }

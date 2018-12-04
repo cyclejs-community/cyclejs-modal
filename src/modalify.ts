@@ -84,6 +84,8 @@ export class ModalSource {
     }
 }
 
+type ModalStack = Array<[string | undefined, Scope[], Sinks]>;
+
 export function modalify(
     main: Component,
     {
@@ -110,9 +112,7 @@ export function modalify(
 
         if (sinks[name]) {
             const modalProxy$: Stream<ModalAction> = xs.create<ModalAction>();
-            const modalStack$: Stream<
-                [string | undefined, Scope[], Sinks][]
-            > = xs
+            const modalStack$: Stream<ModalStack> = xs
                 .merge(sinks[name] as Stream<ModalAction>, modalProxy$)
                 .fold((acc, curr) => {
                     if (curr.type === 'close') {
@@ -222,7 +222,7 @@ export function modalify(
                     .map(arr =>
                         arr.filter(s => s[0] === undefined).map(s => s[2])
                     )
-                    .map<Sinks>(mergeSinks),
+                    .map<Sinks>(mergeSinks as any),
                 Object.keys(sinks)
             );
 
